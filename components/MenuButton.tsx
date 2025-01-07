@@ -4,14 +4,14 @@ import {
   Check, 
   User, 
   Briefcase, 
-  Broom, 
+  Eraser, // Changed from Broom
   Users, 
   Globe, 
   Shield, 
   EyeOff, 
   Plus, 
   Video, 
-  UsersSlash,
+  UserMinus, // Changed from UsersSlash
   Tool,
   UserCog,
   LucideIcon 
@@ -28,14 +28,14 @@ const iconMap: Record<string, LucideIcon> = {
   'check': Check,
   'user': User,
   'briefcase': Briefcase,
-  'broom': Broom,
+  'broom': Eraser, // Using Eraser instead of Broom
   'users': Users,
   'globe': Globe,
   'shield': Shield,
   'eye-off': EyeOff,
   'plus': Plus,
   'video': Video,
-  'users-slash': UsersSlash,
+  'users-slash': UserMinus, // Using UserMinus instead of UsersSlash
   'tool': Tool,
   'user-cog': UserCog
 };
@@ -45,13 +45,9 @@ const MenuButton = ({ icon, label, links = [], className = '' }: MenuButtonProps
   const Icon = iconMap[icon];
 
   const openMultipleLinks = () => {
-    // Store the original beforeunload handler
     const originalBeforeUnload = window.onbeforeunload;
-    
-    // Temporarily remove any beforeunload handlers
     window.onbeforeunload = null;
     
-    // Open all links
     links.forEach((link) => {
       if (link && link.trim()) {
         const win = window.open(link.trim(), '_blank');
@@ -61,7 +57,6 @@ const MenuButton = ({ icon, label, links = [], className = '' }: MenuButtonProps
       }
     });
     
-    // Restore the original beforeunload handler after a short delay
     setTimeout(() => {
       window.onbeforeunload = originalBeforeUnload;
     }, 100);
