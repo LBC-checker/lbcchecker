@@ -1,4 +1,4 @@
-// components/MenuButton.js
+// components/MenuButton.tsx
 import { useState } from 'react';
 import { 
   Check, 
@@ -16,7 +16,14 @@ import {
   UserCog 
 } from 'lucide-react';
 
-const iconMap = {
+interface MenuButtonProps {
+  icon: string;
+  label: string;
+  links: string[];
+  className?: string;
+}
+
+const iconMap: Record<string, any> = {
   'check': Check,
   'user': User,
   'briefcase': Briefcase,
@@ -32,18 +39,14 @@ const iconMap = {
   'user-cog': UserCog
 };
 
-const MenuButton = ({ icon, label, links = [], className = '' }) => {
+const MenuButton = ({ icon, label, links = [], className = '' }: MenuButtonProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const Icon = iconMap[icon];
 
   const openMultipleLinks = () => {
-    // Store the original beforeunload handler
     const originalBeforeUnload = window.onbeforeunload;
-    
-    // Temporarily remove any beforeunload handlers
     window.onbeforeunload = null;
     
-    // Open all links
     links.forEach((link) => {
       if (link && link.trim()) {
         const win = window.open(link.trim(), '_blank');
@@ -53,7 +56,6 @@ const MenuButton = ({ icon, label, links = [], className = '' }) => {
       }
     });
     
-    // Restore the original beforeunload handler after a short delay
     setTimeout(() => {
       window.onbeforeunload = originalBeforeUnload;
     }, 100);

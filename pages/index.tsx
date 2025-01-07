@@ -1,9 +1,17 @@
-// pages/index.js
+// pages/index.tsx
 import { Shield } from 'lucide-react';
 import MenuButton from '../components/MenuButton';
 
+interface MenuItem {
+  id: string;
+  icon: string;
+  label: string;
+  links: string[];
+  className?: string;
+}
+
 export default function Home() {
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     { 
       id: 'page-checker', 
       icon: 'check', 
@@ -126,7 +134,7 @@ export default function Home() {
     }
   ];
 
-  const videoTutorial = {
+  const videoTutorial: MenuItem = {
     id: 'video-tutorial',
     icon: 'video',
     label: 'Video Tutorial',
@@ -134,7 +142,7 @@ export default function Home() {
     className: 'bg-red-500 hover:bg-red-600 mt-4'
   };
 
-  const viralHelper = {
+  const viralHelper: MenuItem = {
     id: 'viral-helper',
     icon: 'eye-off',
     label: 'LBC Viral Helper',
