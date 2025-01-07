@@ -13,7 +13,8 @@ import {
   Video, 
   UsersSlash,
   Tool,
-  UserCog 
+  UserCog,
+  LucideIcon 
 } from 'lucide-react';
 
 interface MenuButtonProps {
@@ -23,7 +24,7 @@ interface MenuButtonProps {
   className?: string;
 }
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, LucideIcon> = {
   'check': Check,
   'user': User,
   'briefcase': Briefcase,
@@ -44,9 +45,13 @@ const MenuButton = ({ icon, label, links = [], className = '' }: MenuButtonProps
   const Icon = iconMap[icon];
 
   const openMultipleLinks = () => {
+    // Store the original beforeunload handler
     const originalBeforeUnload = window.onbeforeunload;
+    
+    // Temporarily remove any beforeunload handlers
     window.onbeforeunload = null;
     
+    // Open all links
     links.forEach((link) => {
       if (link && link.trim()) {
         const win = window.open(link.trim(), '_blank');
@@ -56,6 +61,7 @@ const MenuButton = ({ icon, label, links = [], className = '' }: MenuButtonProps
       }
     });
     
+    // Restore the original beforeunload handler after a short delay
     setTimeout(() => {
       window.onbeforeunload = originalBeforeUnload;
     }, 100);
