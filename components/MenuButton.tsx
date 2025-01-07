@@ -4,15 +4,15 @@ import {
   Check, 
   User, 
   Briefcase, 
-  Eraser, // Changed from Broom
+  Eraser,
   Users, 
   Globe, 
   Shield, 
   EyeOff, 
   Plus, 
   Video, 
-  UserMinus, // Changed from UsersSlash
-  Tool,
+  UserMinus,
+  Wrench, // Changed from Tool
   UserCog,
   LucideIcon 
 } from 'lucide-react';
@@ -28,15 +28,15 @@ const iconMap: Record<string, LucideIcon> = {
   'check': Check,
   'user': User,
   'briefcase': Briefcase,
-  'broom': Eraser, // Using Eraser instead of Broom
+  'broom': Eraser,
   'users': Users,
   'globe': Globe,
   'shield': Shield,
   'eye-off': EyeOff,
   'plus': Plus,
   'video': Video,
-  'users-slash': UserMinus, // Using UserMinus instead of UsersSlash
-  'tool': Tool,
+  'users-slash': UserMinus,
+  'tool': Wrench, // Using Wrench instead of Tool
   'user-cog': UserCog
 };
 
